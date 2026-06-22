@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Starters</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #6c4a2a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: absolute;
+            right: 120px; /* Adjusted for new cart link */
+            top: 20px;
+            background-color: #d32f2f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        header a:hover {
+            background-color: #b71c1c;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+        .card .price {
+            color: #d32f2f;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card button {
+            background-color: #6c4a2a;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .card button:hover {
+            background-color: #d32f2f;
+        }
+        .navigation {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .navigation a {
+            background-color: #6c4a2a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .navigation a:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+    <script>
+        // Function to generate the bill alert
+        function generateBill(itemName, itemPrice) {
+            alert(`Thank you for your order!\n\nItem: ${itemName}\nPrice: ₹${itemPrice}`);
+            addToCart(itemName, itemPrice);
+        }
+
+        // Function to add item to the cart
+        function addToCart(itemName, itemPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: itemName, price: itemPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Coffee Shop Veg Starters</h1>
+    <a href="D:/Coffee Shop Website/login.html">Login</a>
+    <a href="D:/Coffee Shop Website/dashboard.html">Cart</a> <!-- New Cart Link -->
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/paneer.jpg" alt="Paneer Tikka">
+        <h3>Paneer Tikka</h3>
+        <p>A spicy grilled paneer starter.</p>
+        <p class="price">₹190</p>
+        <button onclick="generateBill('Paneer Tikka', 190)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/roll.jpeg" alt="Veg Spring Rolls">
+        <h3>Veg Spring Rolls</h3>
+        <p>Crispy rolls stuffed with fresh veggies.</p>
+        <p class="price">₹150</p>
+        <button onclick="generateBill('Veg Spring Rolls', 150)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/aloo.webp" alt="Aloo Tikki">
+        <h3>Aloo Tikki</h3>
+        <p>Crispy fried potato cutlets.</p>
+        <p class="price">₹120</p>
+        <button onclick="generateBill('Aloo Tikki', 120)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/Cheese-corn-balls-5.jpg" alt="Cheese Corn Balls">
+        <h3>Cheese Corn Balls</h3>
+        <p>Creamy cheese and corn balls.</p>
+        <p class="price">₹180</p>
+        <button onclick="generateBill('Cheese Corn Balls', 180)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/chilli-paneer02.jpg" alt="Chilli Paneer">
+        <h3>Chilli Paneer</h3>
+        <p>Paneer tossed in spicy chilli sauce.</p>
+        <p class="price">₹220</p>
+        <button onclick="generateBill('Chilli Paneer', 220)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/Hara-Bhara-Kabab-2.webp" alt="Hara Bhara Kebab">
+        <h3>Hara Bhara Kebab</h3>
+        <p>Healthy green vegetable kebabs.</p>
+        <p class="price">₹160</p>
+        <button onclick="generateBill('Hara Bhara Kebab', 160)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/dahi.jpg" alt="Dahi Ke Kebab">
+        <h3>Dahi Ke Kebab</h3>
+        <p>Soft and creamy yogurt kebabs.</p>
+        <p class="price">₹200</p>
+        <button onclick="generateBill('Dahi Ke Kebab', 200)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/mushroom-65-recipe-1.webp" alt="Mushroom 65">
+        <h3>Mushroom 65</h3>
+        <p>Spicy fried mushrooms.</p>
+        <p class="price">₹190</p>
+        <button onclick="generateBill('Mushroom 65', 190)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/veg-manchurian.jpg" alt="Veg Manchurian">
+        <h3>Veg Manchurian</h3>
+        <p>Fried vegetable balls in tangy sauce.</p>
+        <p class="price">₹170</p>
+        <button onclick="generateBill('Veg Manchurian', 170)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/stuffed-mushrooms-2.jpg" alt="Stuffed Mushrooms">
+        <h3>Stuffed Mushrooms</h3>
+        <p>Mushrooms stuffed with spiced veggies.</p>
+        <p class="price">₹210</p>
+        <button onclick="generateBill('Stuffed Mushrooms', 210)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/kabab.jpeg" alt="Veg Seekh Kebab">
+        <h3>Veg Seekh Kebab</h3>
+        <p>Grilled skewers of spiced vegetables.</p>
+        <p class="price">₹180</p>
+        <button onclick="generateBill('Veg Seekh Kebab', 180)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/Aloo-chaat-WS.jpg" alt="Aloo Chaat">
+        <h3>Aloo Chaat</h3>
+        <p>Spicy and tangy potato snack.</p>
+        <p class="price">₹130</p>
+        <button onclick="generateBill('Aloo Chaat', 130)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/paneer-pakoda.jpg" alt="Paneer Pakora">
+        <h3>Paneer Pakora</h3>
+        <p>Crispy fried paneer fritters.</p>
+        <p class="price">₹160</p>
+        <button onclick="generateBill('Paneer Pakora', 160)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/VegetablePakora.webp" alt="Veg Pakora">
+        <h3>Veg Pakora</h3>
+        <p>Fried fritters of mixed vegetables.</p>
+        <p class="price">₹120</p>
+        <button onclick="generateBill('Veg Pakora', 120)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/paneer.jpg" alt="Paneer Shashlik">
+        <h3>Paneer Shashlik</h3>
+        <p>Grilled paneer with peppers and onions.</p>
+        <p class="price">₹240</p>
+        <button onclick="generateBill('Paneer Shashlik', 240)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/corn.webp" alt="Corn Fritters">
+        <h3>Corn Fritters</h3>
+        <p>Crispy fried corn fritters.</p>
+        <p class="price">₹140</p>
+        <button onclick="generateBill('Corn Fritters', 140)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/toast.webp" alt="Cheese Chili Toast">
+        <h3>Cheese Chili Toast</h3>
+        <p>Toasted bread with melted cheese and chillies.</p>
+        <p class="price">₹160</p>
+        <button onclick="generateBill('Cheese Chili Toast', 160)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/popcorn.jpg" alt="Paneer Popcorn">
+        <h3>Paneer Popcorn</h3>
+        <p>Crispy fried paneer bites.</p>
+        <p class="price">₹170</p>
+        <button onclick="generateBill('Paneer Popcorn', 170)">Order Now</button>
+    </div>
+    <div class="card">
+        <img src="D:/Coffee Shop Website/assets/fries.jpg" alt="Masala Fries">
+        <h3>Masala Fries</h3>
+        <p>French fries with spicy seasoning.</p>
+        <p class="price">₹90</p>
+        <button onclick="generateBill('Masala Fries', 90)">Order Now</button>
+    </div>
+</div>
+
+<div class="navigation">
+    <a href="dashboard.html">Previous</a>
+</div>
+
+</body>
+</html>

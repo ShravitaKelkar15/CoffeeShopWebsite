@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Coffee Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .navbar a.active {
+            background-color: #555;
+        }
+
+        .help-section {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .help-section h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .faq {
+            margin: 15px 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .faq h3 {
+            margin: 0;
+            cursor: pointer; /* Pointer cursor for clickable FAQ headings */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Coffee Shop</a>
+            <ul class="navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="help.html" class="active">Help</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Help Section -->
+    <section class="help-section">
+        <div class="container">
+            <h1>Help & Support</h1>
+            <p>If you have any questions or need assistance, please check our FAQs below or contact our support team.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <h3>1. How do I place an order?</h3>
+                <p style="display: none;">To place an order, simply navigate to the menu section, select your items, and add them to your cart. Then, proceed to checkout.</p>
+            </div>
+            <div class="faq">
+                <h3>2. What payment methods do you accept?</h3>
+                <p style="display: none;">We accept all major credit cards, PayPal, and cash on delivery.</p>
+            </div>
+            <div class="faq">
+                <h3>3. Can I cancel my order?</h3>
+                <p style="display: none;">You can cancel your order within 15 minutes of placing it. Please contact our support team to assist you with the cancellation.</p>
+            </div>
+            <div class="faq">
+                <h3>4. How can I contact customer support?</h3>
+                <p style="display: none;">You can reach our customer support through the contact page or email us at support@coffeeshop.com.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Coffee Shop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq h3').forEach((faq) => {
+            faq.addEventListener('click', () => {
+                const answer = faq.nextElementSibling;
+                answer.style.display = answer.style.display === 'none' || answer.style.display === '' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

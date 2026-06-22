@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Coffee Shop Locator</title>
+   <style>
+       #map {
+           height: 400px;
+           width: 100%;
+       }
+       /* Customize search input */
+       #search-input {
+           width: 240px;
+           height: 30px;
+           margin-top: 10px;
+           padding: 5px;
+       }
+   </style>
+</head>
+<body>
+   <h1>Find Us</h1>
+   <input id="search-input" class="controls" type="text" placeholder="Search your destination">
+   <div id="map"></div>
+
+   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+   <script>
+       function initMap() {
+           var map = new google.maps.Map(document.getElementById('map'), {
+               center: {lat: 40.7128, lng: -74.0060},  // Default to New York
+               zoom: 12
+           });
+
+           var input = document.getElementById('search-input');
+           var searchBox = new google.maps.places.SearchBox(input);
+
+           map.addListener('bounds_changed', function() {
+               searchBox.setBounds(map.getBounds());
+           });
+
+           var markers = [];
+           searchBox.addListener('places_changed', function() {
+               var places = searchBox.getPlaces();
+               if (places.length == 0) {
+                   return;
+               }
+
+               markers.forEach(function(marker) {
+                   marker.setMap(null);
+               });
+               markers = [];
+
+               var bounds = new google.maps.LatLngBounds();
+               places.forEach(function(place) {
+                   if (!place.geometry) {
+                       console.log("Returned place contains no geometry");
+                       return;
+                   }
+
+                   markers.push(new google.maps.Marker({
+                       map: map,
+                       title: place.name,
+                       position: place.geometry.location
+                   }));
+
+                   if (place.geometry.viewport) {
+                       bounds.union(place.geometry.viewport);
+                   } else {
+                       bounds.extend(place.geometry.location);
+                   }
+               });
+               map.fitBounds(bounds);
+           });
+       }
+       window.onload = initMap;
+   </script>
+</body>
+</html>
