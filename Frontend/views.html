@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop - Customer Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .review:last-child {
+            border-bottom: none;
+        }
+
+        .review h3 {
+            color: #e67e22;
+            margin-bottom: 5px;
+        }
+
+        .review p {
+            color: #7f8c8d;
+        }
+
+        #feedback-form {
+            margin-top: 30px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #e67e22;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Customer Reviews</h1>
+
+        <div id="reviews">
+            <!-- Reviews will be displayed here -->
+        </div>
+
+        <div id="feedback-form">
+            <h2>Leave Your Feedback</h2>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <textarea id="feedback" rows="5" placeholder="Your Review" required></textarea>
+            <button onclick="submitReview()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        const reviews = [
+            {
+                name: 'Sanjana Kocharekar',
+                feedback: 'The coffee was amazing, and the staff was super friendly! Highly recommend this place.'
+            },
+            {
+                name: 'Puja Bhatkar',
+                feedback: 'I love the ambiance of this coffee shop. Perfect spot to relax and enjoy a cup of coffee.'
+            },
+            {
+                name: 'Shrawani Joshi',
+                feedback: 'The pastries were fresh and delicious. Great experience overall!'
+            },
+            {
+                name: 'Ashish Ghadigaonkar',
+                feedback: 'Worth of price and starters was amazing !'
+            },
+            {
+                name: 'Mayur Garaje',
+                feedback: 'Taste of coffee was amazing !'
+            },
+            {
+                name: 'Sahil Pankar',
+                feedback: 'Coffee was delicious with a reasonable price.'
+            },
+            {
+                name: 'Om Parab ',
+                feedback: 'Loves the coffee.'
+            }
+        ];
+
+        function displayReviews() {
+            const reviewsContainer = document.getElementById('reviews');
+            reviewsContainer.innerHTML = '';
+
+            reviews.forEach((review) => {
+                const reviewElement = document.createElement('div');
+                reviewElement.classList.add('review');
+
+                reviewElement.innerHTML = `
+                    <h3>${review.name}</h3>
+                    <p>${review.feedback}</p>
+                `;
+
+                reviewsContainer.appendChild(reviewElement);
+            });
+        }
+
+        function submitReview() {
+            const name = document.getElementById('name').value;
+            const feedback = document.getElementById('feedback').value;
+
+            if (name && feedback) {
+                const newReview = { name, feedback };
+                reviews.push(newReview);
+                displayReviews();
+
+                // Clear the form fields
+                document.getElementById('name').value = '';
+                document.getElementById('feedback').value = '';
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+
+        // Display initial reviews on page load
+        window.onload = displayReviews;
+    </script>
+
+</body>
+</html>

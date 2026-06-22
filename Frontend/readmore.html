@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background-color: #6f4e37;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        /* About Section */
+        .about {
+            padding: 50px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .about h2 {
+            color: #6f4e37;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 50px;
+            background-color: #f4f4f4;
+        }
+
+        .menu h2 {
+            color: #6f4e37;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .menu-list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .menu-item p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 50px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .contact h2 {
+            color: #6f4e37;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact label {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact button {
+            background-color: #6f4e37;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .contact button:hover {
+            background-color: #56382d;
+        }
+
+        footer {
+            background-color: #6f4e37;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Our Coffee Shop</h1>
+    </header>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>
+            Our coffee shop is a cozy spot where friends gather, ideas flourish, and the perfect brew is always within reach. 
+            We source only the finest beans from sustainable farms, ensuring that every cup is both delicious and ethical. 
+            Whether you're in for a quick coffee or staying for a chat, we're here to make your experience unforgettable.
+        </p>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <h2>Some Best Feedback for Coffee </h2>
+        <div class="menu-list">
+            <div class="menu-item">
+                <h3>Espresso</h3>
+                <p>Rich, bold, and full of flavor. The perfect pick-me-up.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Cappuccino</h3>
+                <p>A perfect balance of espresso, steamed milk, and foam.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Latte</h3>
+                <p>Smooth and creamy with a hint of espresso.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Mocha</h3>
+                <p>Delicious blend of coffee and chocolate, topped with whipped cream.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Cold Brew</h3>
+                <p>Slow-brewed for a smooth and refreshing taste.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Coffee Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page refresh
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert(`Thank you, ${name}! Your message has been received.`);
+                // Reset the form
+                document.getElementById('contact-form').reset();
+            } else {
+                alert('Please fill in all the fields.');
+            }
+        });
+    </script>
+
+</body>
+</html>
